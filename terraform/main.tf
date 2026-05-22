@@ -1,3 +1,4 @@
+# ── VPC ──────────────────────────────────────────────────────────────────────
 resource "aws_vpc" "main" {
   cidr_block = var.cidr_block
 
@@ -7,7 +8,8 @@ resource "aws_vpc" "main" {
   }
 }
 
-resource "aws_subnet" "public_subnet_1" {
+# ── Public Subnets ────────────────────────────────────────────────────────────
+resource "aws_subnet" "public_1" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = var.public_subnet_1_cidr
   availability_zone = var.availability_zone_subnet_1
@@ -18,7 +20,7 @@ resource "aws_subnet" "public_subnet_1" {
   }
 }
 
-resource "aws_subnet" "public_subnet_2" {
+resource "aws_subnet" "public_2" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = var.public_subnet_2_cidr
   availability_zone = var.availability_zone_subnet_2
@@ -29,6 +31,7 @@ resource "aws_subnet" "public_subnet_2" {
   }
 }
 
+# ── Internet Gateway ──────────────────────────────────────────────────────────
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
 
@@ -38,6 +41,7 @@ resource "aws_internet_gateway" "main" {
   }
 }
 
+# ── Public Route Table ────────────────────────────────────────────────────────
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
@@ -52,12 +56,13 @@ resource "aws_route_table" "public" {
   }
 }
 
-resource "aws_route_table_association" "public_subnet_1" {
-  subnet_id      = aws_subnet.public_subnet_1.id
+# ── Route Table Associations ──────────────────────────────────────────────────
+resource "aws_route_table_association" "public_1" {
+  subnet_id      = aws_subnet.public_1.id
   route_table_id = aws_route_table.public.id
 }
 
-resource "aws_route_table_association" "public_subnet_2" {
-  subnet_id      = aws_subnet.public_subnet_2.id
+resource "aws_route_table_association" "public_2" {
+  subnet_id      = aws_subnet.public_2.id
   route_table_id = aws_route_table.public.id
 }

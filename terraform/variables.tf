@@ -9,7 +9,7 @@ variable "aws_vpc_name" {
 }
 
 variable "env_name" {
-  description = "The environment name tag applied to all resources"
+  description = "The environment name tag (e.g. dev, qa, prod)"
   type        = string
 }
 

@@ -10,22 +10,22 @@ output "vpc_cidr_block" {
 
 output "public_subnet_1_id" {
   description = "The ID of the first public subnet"
-  value       = aws_subnet.public_subnet_1.id
+  value       = aws_subnet.public_1.id
 }
 
 output "public_subnet_2_id" {
   description = "The ID of the second public subnet"
-  value       = aws_subnet.public_subnet_2.id
+  value       = aws_subnet.public_2.id
 }
 
 output "public_subnet_1_cidr" {
   description = "The CIDR block of the first public subnet"
-  value       = aws_subnet.public_subnet_1.cidr_block
+  value       = aws_subnet.public_1.cidr_block
 }
 
 output "public_subnet_2_cidr" {
   description = "The CIDR block of the second public subnet"
-  value       = aws_subnet.public_subnet_2.cidr_block
+  value       = aws_subnet.public_2.cidr_block
 }
 
 output "internet_gateway_id" {
