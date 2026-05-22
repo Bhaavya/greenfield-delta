@@ -1,4 +1,4 @@
-# ── VPC ──────────────────────────────────────────────────────────────────────
+# ── VPC (greenfield-delta | qa | us-east-1) ──────────────────────────────────
 resource "aws_vpc" "main" {
   cidr_block = var.cidr_block
 
